@@ -18,25 +18,13 @@ struct IngredientsList: View {
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(ingredients) { ingredient in
-                        Button(action: {
-                            toggle(ingredient: ingredient)
-                        }) {
-                            IngredientInfo(
-                                ingredient: ingredient,
-                                selected: selected.contains(ingredient.id))
-                        }
+                        IngredientInfo(
+                            ingredient: ingredient,
+                            selected: _selected)
                     }
                 }
             }
         }.padding([.leading, .trailing])
-    }
-    
-    private func toggle(ingredient: Ingredient) {
-        if let index = selected.firstIndex(of: ingredient.id) {
-            selected.remove(at: index)
-        } else {
-            selected.append(ingredient.id)
-        }
     }
 }
 
